@@ -1,8 +1,11 @@
-import { ADD_MEME_URL } from '../Actions/types';
+import { ADD_MEME_URL, ARCHIVE_MEME_URL } from '../Actions/types';
 
 const initialState = {
-  memeUrl: ""
+  memeUrl: "",
+  memeArchive: []
 }
+
+
 
 const memeReducer = (state = initialState, action) => {
   switch(action.type){
@@ -11,6 +14,13 @@ const memeReducer = (state = initialState, action) => {
         ...state,
         memeUrl: action.data
       };
+
+   case ARCHIVE_MEME_URL:
+      return {
+        ...state,
+        memeArchive: [...state.memeArchive, action.data]
+      };
+
     default:
       return state;
   }

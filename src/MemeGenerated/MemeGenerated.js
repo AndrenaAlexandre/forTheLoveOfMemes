@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import styles from './styles.module.css';
 import { useHistory } from 'react-router-dom';
 import { useClipboard } from 'use-clipboard-copy';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // import { Meme } from '../Meme/Meme';
 
 
@@ -12,11 +12,11 @@ export const MemeGenerated = () => {
     
     const clipboard = useClipboard();
     const history = useHistory();
+    const dispatch = useDispatch();
     // const location= useLocation();
 
     const imgUrl = useSelector(state => state.meme.memeUrl);
     
-
     //now we need to grab the query string. We are going to use URLSearchParams which is used in the API
     //const url = new URLSearchParams(location.search).get('url');
     
@@ -25,6 +25,7 @@ export const MemeGenerated = () => {
     const copyLink = () => {
         clipboard.copy(imgUrl);
         setCopied(true);
+        // dispatch(archiveMemeUrl(imgUrl));
     };
     console.log(imgUrl)
 

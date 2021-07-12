@@ -1,7 +1,8 @@
 import React from 'react';
-import { Meme } from '../Meme/Meme'
+import { Meme } from '../Meme/Meme';
 import { Switch, Route } from 'react-router-dom';
 import { MemeGenerated } from '../MemeGenerated/MemeGenerated';
+import { MemesArchived } from '../MemeArchive/MemeArchive';
 // import styles from './styles.module.css';
 
 export const App = () => {
@@ -14,6 +15,9 @@ export const App = () => {
           </Route>
           <Route path='/generated'>
             <MemeGenerated />
+          </Route>
+          <Route path='/archive'>
+            <MemesArchived />
           </Route>
         </Switch>
     </div>

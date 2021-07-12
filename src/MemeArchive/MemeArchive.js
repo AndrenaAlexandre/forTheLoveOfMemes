@@ -1,14 +1,18 @@
 import React from "react";
 // import { memeArchieve } "./MemeArchive";
+// import Reducer from "../Reducers/memeReducer"
+import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import styles from './styles.module.css';
 
 export const MemesArchived = () => {
   
   const memeArchive = useSelector(state => state.meme.memeArchive);
 
+  const history = useHistory();
   return <>
 
-  Meme Gallery
+  
 
   { memeArchive.map(memeImgUrl => {
     return (
@@ -17,7 +21,9 @@ export const MemesArchived = () => {
       </div>
     )
   })}
-    This is where I want to put memes that have been posted
+    <button onClick={ () => history.push('/')} className={styles.home}>
+      Make More Memes
+    </button>
   </>;
 };
 

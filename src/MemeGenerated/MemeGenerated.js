@@ -3,6 +3,7 @@ import styles from './styles.module.css';
 import { useHistory } from 'react-router-dom';
 import { useClipboard } from 'use-clipboard-copy';
 import { useDispatch, useSelector } from 'react-redux';
+import { archiveMemeUrl } from '../Actions/archiveMeme';
 // import { Meme } from '../Meme/Meme';
 
 
@@ -25,9 +26,10 @@ export const MemeGenerated = () => {
     const copyLink = () => {
         clipboard.copy(imgUrl);
         setCopied(true);
-        // dispatch(archiveMemeUrl(imgUrl));
+        dispatch(archiveMemeUrl(imgUrl));
+    
     };
-    console.log(imgUrl)
+    
 
     return(
         <div className={styles.container}>
@@ -39,6 +41,10 @@ export const MemeGenerated = () => {
             <button onClick={copyLink} className={styles.copy}>
                 { copied ? 'Link Copied!' : 'Copy link'}
             </button>
+            <button onClick={ () => history.push('/archive')} className={styles.home}>
+                Your Meme Gallery
+            </button>
+
         </div>
         )
     // what the above is saying is that if url exist the proceed with rendering the new image
